@@ -50,8 +50,9 @@
 >  | E_Int Int
 >  | E_false
 >  | E_true
+>  | E_nil
 >  | E_Id Id
->  | E_this
+>  | E_self
 >  | E_NewArray Exp
 >  | E_NewObj   Id 
 >  | E_Not Exp
