@@ -6,11 +6,11 @@
 > import Monad
 > import Text.ParserCombinators.Parsec
 
-> data SExpr 
->  = SNode {name :: String, children :: [SExpr]}
->  | SLeaf {val :: String}
->    deriving (Show, Eq)
+> import PrintBasics
+> import SExpr
 
+
+------------------------------------
 
 > p_term = wsp >> (p_expr <|> p_name)
 
@@ -48,14 +48,19 @@
 <> t6 = print $ run p_expr ":foo"
 <> t7 = print $ run p_sym ":foo"
 
-> tp1 n = test $ ("0" ++) $ unwords $ replicate n "* foo(x)"
+> tp1 n = test $ ("0" ++) $ unwords $ replicate n "* y.foo(x)"
 
-
-> parseFile = error "nope"
+--------------------
 
 > parseInput s
 >  = do 
 >       writeFile input s
+>       parseFile input 
+>    where
+>      input = "foo1"
+
+> parseFile input 
+>  = do 
 >       system $ unwords ["ruby_parse", input, ">", output]
 >       inp <- readFile output
 >       let clean_inp = unlines $ reverse $ drop 4 $ reverse $ lines inp
@@ -63,7 +68,6 @@
 >         Right x -> return x
 >         Left y  -> fail ("No parse: " ++ show y) 
 >    where
->      input = "foo1"
 >      output = "foo2"
 
-> test s = parseInput s >>= print 
+> test s = parseInput s >>= putStr . pretty_print 
