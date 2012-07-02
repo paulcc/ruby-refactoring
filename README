@@ -1,0 +1,28 @@
+h1. RASH (Ruby AnalysiS in Haskell) -- it's going to be all over your code! 
+
+I aim to get it to do various static analyses, type checking, and refactoring on Ruby. 
+
+It is being morphed from "this compiler":https://github.com/paulcc/minijava-compiler for a subset of java.
+
+Contributions *very* welcome! I'm also very happy to explain things if people ask. 
+
+h2. Overview
+
+* uses ruby_parser for raw parsing
+* parses SExprs into a usable tree type 
+* converts ruby_parser's labelling scheme into a more regular and simple abstract syntax
+* can pretty-print the abstract syntax back into text
+
+h2. Next steps
+
+* convert more ruby_parser constructs (WIP)
+* write some refactorings in the style of rewrite rules, see the few lines following https://github.com/paulcc/minijava-compiler/blob/master/Canonicalise.lhs#L208
+* adapt the rewrite engine for the new syntax and new rules/transformations
+* look at HaRe (Haskell refactorer) to see which pieces can be adapted 
+* do some static analysis and smell detection
+* tie to an interface (eventual aim: point & click in a web browser)
+
+
+h2. Important point about language choice
+
+I'd rather write this in Agda, because Haskell still has various limitations, but one step at a time...
