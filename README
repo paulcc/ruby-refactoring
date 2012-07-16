@@ -25,4 +25,8 @@ h2. Next steps
 
 h2. Important point about language choice
 
-I'd rather write this in Agda, because Haskell still has various limitations, but one step at a time...
+I'd rather write this in Idris or Agda or Epigram, because Haskell still has various limitations, but one step at a time...
+
+h2. Slow progress?
+
+Ahem yes. Deadlines at work, and a nice distraction via the ICFP programming contest. However, I've got a week's holiday coming up! 
